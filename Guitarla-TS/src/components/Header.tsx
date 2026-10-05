@@ -1,8 +1,14 @@
-import ItemCart from "./ItemCart";
+import ItemCart from "./ItemCart.tsx";
 import { useHeader } from "../hooks/useHeader";
+import type { CartItem } from "../types/index.ts";
 
-export default function Header({ cart, onNewCart }) {
-    const { isEmpty, total, itemUpdated, removeItem, removeCart } = useHeader(cart, onNewCart);
+type HeaderProps = {
+    cart: CartItem[];
+    onNewCart: (newCart: CartItem[]) => void;
+};
+
+export default function Header({ cart, onNewCart }: HeaderProps) {
+    const { isEmpty, total, itemUpdated, removeItem, removeCart } = useHeader({ cart, onNewCart });
 
     return (
         <header className="py-5 header">
@@ -39,7 +45,7 @@ export default function Header({ cart, onNewCart }) {
                                                     <ItemCart
                                                         key={item.id}
                                                         item={item}
-                                                        onUpdateItem={itemUpdated}
+                                                        onUpdatedItem={itemUpdated}
                                                         onRemoveItem={removeItem}
                                                     />
                                                 ))}
