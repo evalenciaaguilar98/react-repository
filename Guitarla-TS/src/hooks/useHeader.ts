@@ -20,7 +20,7 @@ export function useHeader({ cart, onNewCart }: UseHeaderProps) {
         onNewCart(cartUpdated);
     }
 
-    const removeItem = (itemId: number) => {
+    const removeItem = (itemId: CartItem['id']) => {
         const updatedCart = cart.filter(item => item.id !== itemId);
         onNewCart(updatedCart);
     }

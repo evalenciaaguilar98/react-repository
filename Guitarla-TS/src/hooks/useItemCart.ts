@@ -3,7 +3,7 @@ import type { CartItem } from "../types/index.ts";
 type UseItemCartProps = {
     item: CartItem;
     onUpdatedItem: (updatedItem: CartItem) => void;
-    onRemoveItem: (itemId: number) => void;
+    onRemoveItem: (itemId: CartItem['id']) => void;
 };
 
 export function useItemCart({ item, onUpdatedItem, onRemoveItem }: UseItemCartProps) {
